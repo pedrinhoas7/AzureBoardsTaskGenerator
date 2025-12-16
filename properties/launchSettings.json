@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "generate-tasks": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "AZURE_ORG": "",
+        "AZURE_PROJECT": "",
+        "AZURE_PAT": "",
+        "AI_API_KEY": "",
+        "AI_MODEL": "gemini-2.5-flash"
+      }
+    }
+  }
+}
