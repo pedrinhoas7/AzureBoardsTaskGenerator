@@ -20,34 +20,27 @@ O **Azure Boards Task Generator** é uma ferramenta que automatiza a criação d
 - Analisa o texto utilizando IA para identificar tarefas separadas.
 - Gera subtarefas (tasks filhas) com títulos e descrições padronizadas.
 - Cria as tasks via API do Azure Boards e associa ao Work Item pai.
-- Logging detalhado e tratamento robusto de erros.
 
 ---
 
 ## 🚀 Tecnologias
 
-- **.NET 7** – Backend
-- **Newtonsoft.Json** – Manipulação de JSON
+- **.NET 8** – Backend
+- **IA** – Processamento de linguagem natural (gemini)
 - **Azure DevOps REST API** – Integração com Azure Boards
-- **IA** – Processamento de linguagem natural
 
 ---
 
 ## 📝 Exemplo de uso
 
 ```bash
-dotnet run --card 1
+dotnet run -- --card 1
 ````
 
-Ou via código C#:
+Ou Debug C#:
 
 ```csharp
-var tasks = await TaskManager.GenerateTasksForCardAsync(12345);
-foreach(var task in tasks)
-{
-    Console.WriteLine($"Título: {task.Title}");
-    Console.WriteLine($"Descrição: {task.Description}");
-}
+--card 1
 ```
 
 ---
