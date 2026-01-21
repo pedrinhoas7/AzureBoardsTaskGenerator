@@ -88,7 +88,7 @@ public class IAService : IIAService
         return $@"
 Você é um assistente técnico de engenharia de software.
 
-A partir do card abaixo, gere uma lista de tasks técnicas.
+A partir do card abaixo, gere uma lista de no maximo tasks técnicas.
 Cada task deve conter:
 - title
 - description

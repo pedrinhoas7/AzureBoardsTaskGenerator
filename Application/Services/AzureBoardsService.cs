@@ -41,6 +41,7 @@ public class AzureBoardsService : IAzureBoardsService
         {
             new { op = "add", path = "/fields/System.Title", value = title },
             new { op = "add", path = "/fields/System.Description", value = description },
+            new { op = "add", path = "/fields/Microsoft.VSTS.Common.Activity", value = "Development" },
             new {
                 op = "add",
                 path = "/relations/-",
@@ -57,7 +58,26 @@ public class AzureBoardsService : IAzureBoardsService
             "application/json-patch+json"
         );
 
-        var response = await _http.PostAsync(url, content);
+        var response = await _http.PatchAsync(url, content);
+
+
+        var responseBody = await response.Content.ReadAsStringAsync();
+
+        if (!response.IsSuccessStatusCode)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("=== Azure DevOps ERROR ===");
+            Console.WriteLine($"Status: {(int)response.StatusCode} - {response.StatusCode}");
+            Console.WriteLine(responseBody);
+            Console.WriteLine("=========================");
+            Console.ResetColor();
+
+            // opcional: relança com contexto útil
+            throw new Exception(
+                $"Azure DevOps error {(int)response.StatusCode}: {responseBody}"
+            );
+        }
+
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
